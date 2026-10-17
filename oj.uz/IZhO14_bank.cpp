@@ -8,11 +8,11 @@ int main() {
     int n, m; cin >> n >> m;
     vector<int> a(n); for (auto &x : a) cin >> x;
     vector<int> b(m); for (auto &x : b) cin >> x;
-    vector<bool> dp((1 << m));
     vector<int> pref(n);
     for (int i = 0; i < n; i++) {
         pref[i] = pref[(i ? i - 1 : 0)] + a[i];
     }
+    vector<bool> dp(1 << m);
     dp[0] = 1;
     for (int i = 0; i < (1 << m); i++) {
         if (!dp[i]) continue;
@@ -28,10 +28,10 @@ int main() {
         }
         if (sum > pref.back()) continue;
         int cur_pos = upper_bound(pref.begin(), pref.end(), sum) - pref.begin();
-        int left = pref[cur_pos] - sum;
+        int cur_need = pref[cur_pos] - sum;
         for (int j = 0; j < m; j++) {
             if ((1 << j) & i) continue;
-            if (b[j] <= left) {
+            if (b[j] <= cur_need) {
                 dp[i | (1 << j)] = 1;
             }
         }

@@ -1,4 +1,2 @@
-# cpp-sols
-some cpp solutions for problems iv solved
-
-sry if i write some absolute horrible unreadable code here, feel free to pm me on cf
+# Competitive Programming
+Here are my solutions to some of the problems that I have solved, they are all in C++ and all solutions here are complete.
